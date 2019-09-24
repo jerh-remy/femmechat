@@ -1,3 +1,5 @@
+import 'package:femmechat_app/core/constants/app_constants.dart';
+import 'package:femmechat_app/onboarding_page_data.dart';
 import 'package:femmechat_app/ui/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,112 +13,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final int _numPages = 3;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
-
-  List<Widget> onboardingPageData = [
-    Padding(
-      padding: EdgeInsets.all(40.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // Center(
-          //   child: Image(
-          //     image: AssetImage(
-          //       'assets/images/onboarding0.png',
-          //     ),
-          //     height: 300.0,
-          //     width: 300.0,
-          //   ),
-          // ),
-          SizedBox(height: 30.0),
-          Text(
-            'Hey.. \nWelcome to FemmeChat!',
-            style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 20.0,
-            ),
-          ),
-          SizedBox(height: 15.0),
-          Text(
-            'FemmeChat, is a safe environment for creating health awareness and sharing experiences.',
-            softWrap: true,
-            style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ],
-      ),
-    ),
-    Padding(
-      padding: EdgeInsets.all(40.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // Center(
-          //   child: Image(
-          //     image: AssetImage(
-          //       'assets/images/onboarding1.png',
-          //     ),
-          //     height: 300.0,
-          //     width: 300.0,
-          //   ),
-          // ),
-          SizedBox(height: 30.0),
-          Text(
-            'Share your experiences.',
-            style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 20.0,
-            ),
-          ),
-          SizedBox(height: 15.0),
-          Text(
-            'Femmechat allows you to express yourself with like minded individuals with no judgement!',
-            style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ],
-      ),
-    ),
-    Padding(
-      padding: EdgeInsets.all(40.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // Center(
-          //   child: Image(
-          //     image: AssetImage(
-          //       'assets/images/onboarding2.png',
-          //     ),
-          //     height: 300.0,
-          //     width: 300.0,
-          //   ),
-          // ),
-          SizedBox(height: 30.0),
-          Text(
-            'Get professional help',
-            style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 20.0,
-            ),
-          ),
-          SizedBox(height: 15.0),
-          Text(
-            'Get unlimited access to foundations and organizations that offer help and access to resources that create health awareness.',
-            style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ],
-      ),
-    ),
-  ];
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
@@ -146,74 +42,69 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              color: Colors.white,
-              // decoration: BoxDecoration(
-              //   gradient: LinearGradient(
-              //     begin: Alignment.topCenter,
-              //     end: Alignment.bottomCenter,
-              //     // stops: [0.1, 0.4, 0.7, 0.9],
-              //     stops: [0.1, 0.7],
-              //     colors: [
-              //       appPrimaryColor,
-              //       Colors.white,
-              //     ],
-
-              //     // colors: [
-              //     //   Color(0xFF3594DD),
-              //     //   Color(0xFF4563DB),
-              //     //   Color(0xFF5036D5),
-              //     //   Color(0xFF5B16D0),
-              //     // ],
-              //   ),
-              // ),
-              child: PageView(
-                physics: ClampingScrollPhysics(),
-                // physics: NeverScrollableScrollPhysics(),
-                controller: _pageController,
-                onPageChanged: (int page) {
-                  setState(() {
-                    _currentPage = page;
-                  });
-                },
-                children: <Widget>[
-                  ...onboardingPageData,
-                ],
+        value: SystemUiOverlayStyle.dark,
+        child: SafeArea(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height,
+                color: Colors.white,
+                child: Align(
+                  alignment: Alignment(-1.0, 0.65),
+                  child: Image(
+                    image: AssetImage(
+                      'assets/images/Rectangle.png',
+                    ),
+                    width: 200.0,
+                    height: 350.0,
+                  ),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0),
-              child: Column(
+              Container(
+                child: PageView(
+                  physics: BouncingScrollPhysics(),
+                  // physics: NeverScrollableScrollPhysics(),
+                  controller: _pageController,
+                  onPageChanged: (int page) {
+                    setState(() {
+                      _currentPage = page;
+                    });
+                  },
+                  children: <Widget>[
+                    ...onboardingPageData,
+                  ],
+                ),
+              ),
+              Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      FlatButton(
-                        onPressed: () {
-                          print('Skip');
-                          _pageController.animateToPage(
-                            _numPages - 1,
-                            curve: Curves.ease,
-                            duration: Duration(
-                              milliseconds: 150,
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'SKIP',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16.0,
-                              fontFamily: 'Montserrat'),
-                        ),
-                      ),
+                      _currentPage != 2
+                          ? FlatButton(
+                              onPressed: () {
+                                print('Skip');
+                                _pageController.animateToPage(
+                                  _numPages - 1,
+                                  curve: Curves.ease,
+                                  duration: Duration(
+                                    milliseconds: 200,
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'SKIP',
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.75),
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'Montserrat'),
+                              ),
+                            )
+                          : Container(),
                     ],
                   ),
                   _currentPage != _numPages - 1
@@ -221,12 +112,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Align(
                               alignment: Alignment(
                                 0.8,
-                                0.35,
+                                0.3,
                               ),
                               child: GestureDetector(
                                 onTap: () {
                                   _pageController.nextPage(
-                                    duration: Duration(milliseconds: 300),
+                                    duration: Duration(milliseconds: 350),
                                     curve: Curves.ease,
                                   );
                                 },
@@ -242,84 +133,54 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     color: Colors.white,
                                   ),
                                 ),
-                              )
-
-                              //  FlatButton(
-                              //   onPressed: () {
-                              //     _pageController.nextPage(
-                              //       duration: Duration(milliseconds: 300),
-                              //       curve: Curves.ease,
-                              //     );
-                              //   },
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     mainAxisSize: MainAxisSize.min,
-                              //     children: <Widget>[
-                              //       Text(
-                              //         'Next',
-                              //         style: TextStyle(
-                              //           color: Colors.black,
-                              //           fontSize: 18.0,
-                              //         ),
-                              //       ),
-                              //       SizedBox(width: 10.0),
-                              //       Icon(
-                              //         Icons.arrow_forward,
-                              //         color: Colors.black,
-                              //         size: 30.0,
-                              //       ),
-                              //     ],
-                              //   ),
-                              // ),
-                              ),
+                              )),
                         )
                       : Expanded(
                           child: Align(
                             alignment: Alignment(
-                              0.9,
+                              0.8,
                               0.35,
                             ),
-                            child: FlatButton(
-                              onPressed: () {
-                                _pageController.nextPage(
-                                  duration: Duration(milliseconds: 300),
-                                  curve: Curves.ease,
-                                );
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, RoutePaths.GetStarted);
                               },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(
-                                    'Get Started',
+                              child: Container(
+                                width: 150,
+                                height: 60,
+                                padding: EdgeInsets.all(10.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  color: appPrimaryColor,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "Get Started",
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w500,
                                       fontSize: 18.0,
                                     ),
                                   ),
-                                  SizedBox(width: 10.0),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: Colors.black,
-                                    size: 30.0,
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                 ],
               ),
-            ),
-            Align(
-              alignment: Alignment(-0.65, 0.35),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: _buildPageIndicator(),
+              Align(
+                alignment: Alignment(-0.65, 0.35),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: _buildPageIndicator(),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

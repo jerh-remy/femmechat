@@ -1,4 +1,6 @@
-import 'package:femmechat_app/ui/shared/app_colors.dart' as prefix0;
+import 'package:femmechat_app/core/constants/app_constants.dart';
+import 'package:femmechat_app/router.dart';
+import 'package:femmechat_app/ui/shared/app_colors.dart' as mytheme;
 import 'package:femmechat_app/ui/views/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +14,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        accentColor: prefix0.appPrimaryColor,
-        primaryColor: prefix0.appPrimaryColor,
+        accentColor: mytheme.appPrimaryColor,
+        primaryColor: mytheme.appPrimaryColor,
       ),
-      home: OnboardingScreen(),
+      initialRoute: RoutePaths.Onboarding,
+      onGenerateRoute: Router.generateRoute,
     );
   }
 }
