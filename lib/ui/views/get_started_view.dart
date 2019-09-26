@@ -121,6 +121,9 @@ class GetStartedView extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(
+              height: 50.0,
+            )
           ],
         ),
       ),
