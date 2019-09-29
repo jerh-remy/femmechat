@@ -1,5 +1,8 @@
 import 'package:femmechat_app/core/constants/app_constants.dart';
 import 'package:femmechat_app/ui/shared/app_colors.dart';
+import 'package:femmechat_app/ui/widgets/get_started/login_btn.dart';
+import 'package:femmechat_app/ui/widgets/get_started/register_btn.dart';
+import 'package:femmechat_app/ui/widgets/get_started/skip_register_btn.dart';
 import 'package:flutter/material.dart';
 
 class GetStartedView extends StatelessWidget {
@@ -40,84 +43,9 @@ class GetStartedView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      return null;
-                    },
-                    child: Container(
-                      width: 190,
-                      height: 60,
-                      padding: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: appPrimaryColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Skip Registration',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, RoutePaths.Register);
-                    },
-                    child: Container(
-                      width: 190,
-                      height: 60,
-                      padding: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: appPrimaryColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Register",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      //  var loginSuccess = await model.login(_controller.text);
-                      // if (loginSuccess) {
-                      Navigator.pushNamed(context, RoutePaths.Login);
-                      // }
-                    },
-                    child: Container(
-                      width: 190,
-                      height: 60,
-                      padding: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: appPrimaryColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  SkipRegisterBtn(),
+                  RegisterBtn(),
+                  LoginBtn(),
                 ],
               ),
             ),

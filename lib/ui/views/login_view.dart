@@ -1,7 +1,8 @@
-import 'package:femmechat_app/core/constants/app_constants.dart';
 import 'package:femmechat_app/ui/shared/app_colors.dart';
 import 'package:femmechat_app/ui/shared/remove_scroll_highlight.dart';
 import 'package:femmechat_app/ui/shared/ui_helpers.dart';
+import 'package:femmechat_app/ui/widgets/login/appbar.dart';
+import 'package:femmechat_app/ui/widgets/login/login_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
@@ -54,74 +55,8 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 Column(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 30.0,
-                        right: 20.0,
-                        top: 10.0,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                            flex: 2,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                IconButton(
-                                  icon: Image.asset(
-                                    'assets/images/cancel.png',
-                                    width: 20.0,
-                                    height: 20.0,
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      height: 1.4,
-                                      fontFamily: 'Montserrat',
-                                      fontSize: 20.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: <Widget>[
-                                Image(
-                                  image: AssetImage(
-                                    'assets/images/girl.png',
-                                  ),
-                                  width: 80.0,
-                                  height: 100.0,
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    CustomAppbar(
+                      title: 'Login',
                     ),
                     UIHelper.verticalSpaceSmall,
                     Padding(
@@ -166,7 +101,7 @@ class _LoginViewState extends State<LoginView> {
                             keyboardType: TextInputType.text,
                             controller: _usernameController,
                             style: TextStyle(
-                              color: Colors.black54,
+                              color: Colors.black,
                               fontWeight: FontWeight.w500,
                               fontFamily: 'Montserrat',
                               letterSpacing: 0.5,
@@ -206,7 +141,7 @@ class _LoginViewState extends State<LoginView> {
                             keyboardType: TextInputType.text,
                             controller: _passwordController,
                             style: TextStyle(
-                              color: Colors.black54,
+                              color: Colors.black,
                               letterSpacing: 0.5,
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.w500,
@@ -243,46 +178,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ],
                 ),
-                Container(
-                  width: double.infinity,
-                  height: (mediaQuery.size.height - mediaQuery.padding.top),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: GestureDetector(
-                      onTap: () {
-                        //  var loginSuccess = await model.login(_controller.text);
-                        // if (loginSuccess) {
-                        // Navigator.pushNamed(context, RoutePaths.Home);
-                        // }
-                      },
-                      child: Container(
-                        width: 190,
-                        height: 60,
-                        padding: EdgeInsets.all(
-                          15.0,
-                        ),
-                        margin: EdgeInsets.only(
-                          bottom: 48.0,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30.0),
-                          color: appPrimaryColor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
+                LoginButton(mediaQuery: mediaQuery)
               ],
             ),
           ),
