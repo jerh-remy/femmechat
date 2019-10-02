@@ -34,7 +34,7 @@ class Buttons extends StatelessWidget {
                         _numPages - 1,
                         curve: Curves.ease,
                         duration: Duration(
-                          milliseconds: 200,
+                          milliseconds: 500,
                         ),
                       );
                     },

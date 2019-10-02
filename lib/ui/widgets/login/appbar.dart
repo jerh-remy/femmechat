@@ -15,6 +15,7 @@ class CustomAppbar extends StatelessWidget {
         left: 30.0,
         right: 20.0,
         top: 10.0,
+        bottom: 0.0,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,6 +24,7 @@ class CustomAppbar extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 IconButton(
@@ -32,6 +34,7 @@ class CustomAppbar extends StatelessWidget {
                     height: 20.0,
                   ),
                   onPressed: () {
+                    print("Exit");
                     Navigator.of(context).pop();
                   },
                 ),
@@ -41,7 +44,7 @@ class CustomAppbar extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(8.0),
